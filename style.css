@@ -66,12 +66,14 @@ h1 {
     height: 8px;
 }
 
-#blocks::-webkit-scrollbar-thumb, #pallet::-webkit-scrollbar-thumb {
+#blocks::-webkit-scrollbar-thumb,
+#pallet::-webkit-scrollbar-thumb {
     background: gray;
     border-radius: 4px;
 }
 
-#blocks::-webkit-scrollbar-track, #pallet::-webkit-scrollbar-track {
+#blocks::-webkit-scrollbar-track,
+#pallet::-webkit-scrollbar-track {
     background: transparent;
 }
 
@@ -115,15 +117,11 @@ h1 {
     background-color: #00000000;
 }
 
-.block:hover input.block-content:hover {
-    text-decoration: none;
-}
-
 .block.literal {
     background-color: #ffb224;
 }
 
-.block.wildcard {
+.block.chars {
     background-color: #bf7af0;
 }
 
@@ -207,4 +205,52 @@ h1 {
     border: 1px solid #2e2e2e;
 
     transition: 150ms;
+}
+
+#testing-input {
+    width: 97%;
+
+    box-sizing: border-box;
+
+    margin: auto;
+    margin-top: 8px;
+    padding: 8px;
+
+    display: block;
+
+    background-color: black;
+
+    border-radius: 4px;
+    border: 1px solid #2e2e2e;
+
+    font-family: "Geist Mono", serif;
+    font-size: medium;
+
+    color: #ededed;
+}
+
+#testing-input::-webkit-input-placeholder {
+    font-style: italic;
+    color: #454545;
+}
+
+#testing-input:-moz-placeholder {
+    font-style: italic;
+    color: #454545;
+}
+
+#testing-input::-moz-placeholder {
+    font-style: italic;
+    color: #454545;
+}
+
+#testing-input:-ms-input-placeholder {
+    font-style: italic;
+    color: #454545;
+}
+
+span#final-placeholder {
+    font-style: italic;
+
+    color: #454545;
 }

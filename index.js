@@ -1,4 +1,4 @@
-const inputs = document.querySelectorAll('input');
+const inputs = document.querySelectorAll('input.block-content');
 const blocks = document.getElementById('blocks');
 
 function resizeInput(input) {
@@ -67,18 +67,36 @@ function generateRegex() {
                     regex += '\\b';
                     break;
 
-                case 'block wildcard any':
+                case 'block chars any':
                     regex += '.';
+                    break;
+
+                case 'block chars digit':
+                    regex += '\\d';
+                    break;
+
+                case 'block chars non-digit':
+                    regex += '\\D';
+                    break;
+    
+                case 'block chars whitespace':
+                    regex += '\\s';
+                    break;
+
+                case 'block chars non-whitespace':
+                    regex += '\\S';
                     break;
             }
         }
     }
 
     if (regex === '') {
-        regex = ' ';
+        document.getElementById('final-regex').innerHTML = '<span id="final-placeholder">Regex goes here</span>';
+    } else {
+        document.getElementById('final-regex').innerText = regex;
     }
 
-    document.getElementById('final-regex').innerText = regex;
+    updateRegexTest();
 }
 
 function escapeString(str) {
@@ -139,7 +157,11 @@ function regeneratePallet() {
         { type: 'anchor', class: 'str-end', input: null, content: 'str end' },
         { type: 'boundary', class: 'word', input: null, content: 'word bound' },
         { type: 'literal', class: 'string', input: 'cat', content: null },
-        { type: 'wildcard', class: 'any', input: null, content: 'any char' },
+        { type: 'chars', class: 'any', input: null, content: 'any char' },
+        { type: 'chars', class: 'digit', input: null, content: 'digit' },
+        { type: 'chars', class: 'non-digit', input: null, content: 'non-digit' },
+        { type: 'chars', class: 'whitespace', input: null, content: 'whitespace' },
+        { type: 'chars', class: 'non-whitespace', input: null, content: 'non-whitespace' },
         { type: 'repeat', class: 'zero-plus', input: 'cat', content: '0+ times' },
         { type: 'repeat', class: 'one-plus', input: 'cat', content: '1+ times' },
         { type: 'repeat', class: 'zero-or-one', input: 'cat', content: '0-1 times' }
@@ -153,7 +175,7 @@ function regeneratePallet() {
         anchor: [],
         boundary: [],
         literal: [],
-        wildcard: [],
+        chars: [],
         repeat: []
     };
 
@@ -161,7 +183,7 @@ function regeneratePallet() {
         'anchor': 'Anchors',
         'boundary': 'Boundaries',
         'literal': 'Literals',
-        'wildcard': 'Wildcards',
+        'chars': 'Character Classes',
         'repeat': 'Quantifiers'
     }
 
@@ -227,7 +249,7 @@ function capitalizeFirstLetter(string) {
 }
 
 function attatchBlockEvents() {
-    let inputs = document.querySelectorAll('input');
+    let inputs = document.querySelectorAll('input.block-content');
     const draggableItems = document.querySelectorAll('.block');
     draggableItems.forEach(item => {
         item.addEventListener('dragstart', (event) => {
@@ -266,7 +288,7 @@ function attatchBlockEvents() {
 }
 
 function resizeInputs() {
-    let inputs = document.querySelectorAll('input');
+    let inputs = document.querySelectorAll('input.block-content');
     inputs.forEach(input => resizeInput(input));
 }
 
@@ -289,3 +311,22 @@ function copyToClipboard() {
         container.style.outline = '0px solid #62c073'; // Reset to default color
     }, 150);
 }
+
+regeneratePallet();
+
+const testingInput = document.getElementById('testing-input')
+function updateRegexTest() {
+    let regex = new RegExp(document.getElementById('final-regex').innerText);
+    let str = testingInput.value;
+    if (regex.test(str)) {
+        testingInput.style.outline = '2px solid #62c073';
+    } else if (str.length > 0) {
+        testingInput.style.outline = '2px solid #e5484d';
+    } else {
+        testingInput.style.outline = '0px solid #62c073';
+    }
+}
+
+testingInput.addEventListener('input', (event) => {
+    updateRegexTest();
+});

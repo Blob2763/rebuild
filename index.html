@@ -28,31 +28,15 @@
 <body>
     <h1><span class="re">Re</span>Build</h1>
     <div id="builder">
-        <div id="instructions">To delete a block, drag it back into the block pallet ot right-click the block</div>
+        <div id="instructions">To delete a block, drag it back into the block pallet or right-click the block</div>
         <div id="blocks" class="box">
         </div>
         <div id="final-container">
             <pre id="final-regex"></pre>
             <button id="copy-button" onclick="copyToClipboard()"><img src="copy.svg" alt="copy"></button>
         </div>
-        <h2>Block Pallet</h2>
+        <input type="text" id="testing-input" autocomplete="off" placeholder="Test regex here">
         <div id="pallet" class="box">
-            <h3>Anchors</h3>
-            <div class="block anchor str-start" draggable="true"><span class="block-content">str start</span></div>
-            <div class="block anchor str-end" draggable="true"><span class="block-content">str end</span></div>
-            <h3>Boundaries</h3>
-            <div class="block boundary word" draggable="true"><span class="block-content">word bound</span></div>
-            <h3>Literals</h3>
-            <div class="block literal string" draggable="true"><input value="cat" class="block-content"></div>
-            <h3>Wildcards</h3>
-            <div class="block wildcard any" draggable="true"><span class="block-content">any char</span></div>
-            <h3>Quantifiers</h3>
-            <div class="block repeat zero-plus" draggable="true"><input value="cat" class="block-content"><span
-                    class="block-content">0+ times</span></div>
-            <div class="block repeat one-plus" draggable="true"><input value="cat" class="block-content"><span
-                    class="block-content">1+ times</span></div>
-            <div class="block repeat zero-or-one" draggable="true"><input value="cat" class="block-content"><span
-                    class="block-content">0-1 times</span></div>
         </div>
     </div>
 </body>
