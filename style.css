@@ -1,0 +1,210 @@
+:root {
+    --primary: #0ac7b4;
+}
+
+body {
+    background-color: black;
+
+    color: #ededed;
+
+    font-family: "Geist", serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.re {
+    color: var(--primary);
+}
+
+#builder {
+    width: 80%;
+    height: max-content;
+
+    background-color: #0a0a0a;
+
+    border-radius: 8px;
+    border: 1px solid #2e2e2e;
+
+    padding: 32px;
+
+    margin: auto;
+
+}
+
+#blocks {
+    width: 97%;
+
+    border: 1px solid #2e2e2e;
+    border-radius: 8px;
+
+    margin: auto;
+    margin-top: 8px;
+
+    background-color: black;
+
+    overflow-x: auto;
+    /* Enables horizontal scrolling */
+    overflow-y: hidden;
+    /* Disables vertical scrolling */
+    box-sizing: border-box;
+    /* Prevents padding from increasing the size */
+    white-space: nowrap;
+    /* Prevents content from wrapping */
+}
+
+#blocks.no-scrollbar {
+    height: 68px;
+}
+
+#blocks.scrollbar {
+    height: calc(68px + 8px);
+}
+
+#blocks::-webkit-scrollbar {
+    height: 8px;
+}
+
+#blocks::-webkit-scrollbar-thumb, #pallet::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 4px;
+}
+
+#blocks::-webkit-scrollbar-track, #pallet::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#pallet::-webkit-scrollbar {
+    width: 8px;
+}
+
+.block {
+    width: max-content;
+    height: 100%;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 8px;
+
+    border: 1px solid #0a0a0a4e;
+    border-radius: 8px;
+
+    cursor: grab;
+}
+
+.block .block-content {
+    background-color: #0a0a0a4e;
+
+    padding: 4px;
+
+    border: none;
+    border-radius: 4px;
+
+    font-family: "Geist Mono", serif;
+    font-size: medium;
+    color: #ededed;
+
+    width: auto;
+    min-width: 1ch;
+}
+
+.block span.block-content {
+    background-color: #00000000;
+}
+
+.block:hover input.block-content:hover {
+    text-decoration: none;
+}
+
+.block.literal {
+    background-color: #ffb224;
+}
+
+.block.wildcard {
+    background-color: #bf7af0;
+}
+
+.block.anchor {
+    background-color: #454545;
+}
+
+.block.boundary {
+    background-color: #d93036;
+}
+
+.block.repeat {
+    background-color: #62c073;
+}
+
+#final-container {
+    width: 97%;
+    box-sizing: border-box;
+
+    border: 1px solid #2e2e2e;
+    border-radius: 8px;
+
+    margin: auto;
+    margin-top: 8px;
+    padding-left: 8px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#final-regex {
+    background-color: black;
+
+    font-family: "Geist Mono", serif;
+    font-size: medium;
+
+    display: inline-block;
+}
+
+#instructions {
+    width: 97%;
+    box-sizing: border-box;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+#pallet {
+    width: 97%;
+    height: 300px;
+
+    overflow-y: scroll;
+
+    border: 1px solid #2e2e2e;
+    border-radius: 8px;
+
+    margin: auto;
+    margin-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    background-color: black;
+
+    box-sizing: border-box;
+}
+
+#pallet .block {
+    height: 50px;
+    margin-bottom: 4px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+#copy-button {
+    background-color: black;
+
+    border-radius: 4px;
+    border: 1px solid #2e2e2e;
+
+    transition: 150ms;
+}
